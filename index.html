@@ -862,6 +862,39 @@ footer {
   .cd-num { font-size: 1.9rem; }
   .cd-grid { gap: 0.6rem; }
 }
+   /* Music button */
+.music-btn {
+  position: fixed;
+  top: 16px;
+  right: 80px;
+  z-index: 200;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.2s;
+  padding: 0;
+}
+.music-btn:hover { color: var(--color-accent); }
+.music-note {
+  font-size: 1rem;
+  line-height: 1;
+}
+@media (max-width: 720px) {
+  .music-btn {
+    right: 56px;
+    font-size: 0;
+  }
+  .music-note { font-size: 1.1rem; }
+}
 </style>
 </head>
 <body>
@@ -1390,5 +1423,38 @@ document.querySelectorAll('.faq-q').forEach(q => {
 });
 </script>
 
+   <!-- Hidden YouTube player -->
+<iframe id="yt-player"
+  src="https://www.youtube.com/embed/FNLf4Dhh-WA?autoplay=1&mute=1&loop=1&playlist=FNLf4Dhh-WA&controls=0&enablejsapi=1"
+  style="display:none;" allow="autoplay">
+</iframe>
+
+<!-- Music toggle button — sits in nav -->
+<button class="music-btn" id="music-btn" aria-label="Toggle music">
+  <span class="music-note">♪</span>
+  <span class="music-label">Music On</span>
+</button>
+
+<script>
+/* Music toggle */
+let muted = false;
+const btn = document.getElementById('music-btn');
+const label = btn.querySelector('.music-label');
+const player = document.getElementById('yt-player');
+
+btn.addEventListener('click', () => {
+  muted = !muted;
+  if (muted) {
+    player.src = "https://www.youtube.com/embed/FNLf4Dhh-WA?autoplay=1&mute=1&loop=1&playlist=FNLf4Dhh-WA&controls=0";
+    label.textContent = 'Music Off';
+    btn.style.color = 'var(--muted)';
+  } else {
+    player.src = "https://www.youtube.com/embed/FNLf4Dhh-WA?autoplay=1&mute=0&loop=1&playlist=FNLf4Dhh-WA&controls=0";
+    label.textContent = 'Music On';
+    btn.style.color = 'var(--color-accent)';
+  }
+});
+</script>
+   
 </body>
 </html>
