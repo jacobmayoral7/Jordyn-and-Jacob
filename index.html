@@ -862,11 +862,11 @@ footer {
   .cd-num { font-size: 1.9rem; }
   .cd-grid { gap: 0.6rem; }
 }
-  /* Music button */
+ /* Music button */
 .music-btn {
   position: fixed;
-  top: 18px;
-  right: 140px;
+  top: 20px;
+  right: 112px;
   z-index: 200;
   background: none;
   border: none;
@@ -884,23 +884,75 @@ footer {
   padding: 0;
 }
 .music-btn:hover { color: var(--color-accent); }
-.music-note {
-  font-size: 1rem;
-  line-height: 1;
-}
+.music-note { font-size: 1rem; line-height: 1; }
+
 @media (max-width: 720px) {
   .music-btn {
-    top: 18px;
-    right: auto;
-    left: 16px;
-    font-size: 0.6rem;
-    background: rgba(255,255,255,0.92);
-    border: 1px solid var(--blush);
-    border-radius: 20px;
-    padding: 0.35rem 0.75rem;
-    gap: 0.35rem;
+    top: 20px;
+    right: 56px;
+    left: auto;
+    font-size: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 6px;
   }
-  .music-note { font-size: 0.95rem; }
+  .music-note { font-size: 1.1rem; }
+}
+
+/* Welcome overlay */
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: var(--forest);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  transition: opacity 0.8s ease;
+}
+.welcome-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.welcome-names {
+  font-family: var(--font-script);
+  font-size: clamp(3.5rem, 12vw, 7rem);
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.welcome-date {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--blush);
+  margin-bottom: 2.5rem;
+}
+.welcome-btn {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--forest);
+  background: var(--white);
+  border: none;
+  padding: 0.9rem 2.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.welcome-btn:hover { background: var(--blush-light); }
+.welcome-note {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.4);
+  margin-top: 1.25rem;
 }
 }
 </style>
@@ -1431,37 +1483,111 @@ document.querySelectorAll('.faq-q').forEach(q => {
 });
 </script>
 
-  <!-- Hidden YouTube player -->
+ <!-- Welcome overlay -->
+<div class="welcome-overlay" id="welcome-overlay">
+  <div class="welcome-names">Jordyn &amp; Jacob</div>
+  <div class="welcome-date">May 21, 2027 &nbsp;·&nbsp; Grass Valley, CA</div>
+  <button class="welcome-btn" id="welcome-btn">Enter</button>
+  <p class="welcome-note">♪ Music will play on entry</p>
+</div>
+
+<!-- Hidden YouTube player -->
 <iframe id="yt-player"
-  src="https://www.youtube.com/embed/FNLf4Dhh-WA?autoplay=1&mute=1&loop=1&playlist=FNLf4Dhh-WA&controls=0&enablejsapi=1&start=13"
-  style="display:none;" allow="autoplay">
+  src=""
+  style="display:none;"
+  allow="autoplay">
 </iframe>
 
 <!-- Music toggle button -->
 <button class="music-btn" id="music-btn" aria-label="Toggle music">
   <span class="music-note">♪</span>
-  <span class="music-label">Music On</span>
+  <span class="music-label">Mute</span>
 </button>
 
 <script>
-/* Music toggle */
+/* Welcome overlay + autoplay */
+const overlay  = document.getElementById('welcome-overlay');
+const enterBtn = document.getElementById('welcome-btn');
+const player   = document.getElementById('yt-player');
+const musicBtn = document.getElementById('music-btn');
+const label    = musicBtn.querySelector('.music-label');
 let muted = false;
-const btn = document.getElementById('music-btn');
-const label = btn.querySelector('.music-label');
-const player = document.getElementById('yt-player');
 
-btn.addEventListener('click', () => {
-  muted = !muted;
-  if (muted) {
-    player.src = "https://www.youtube.com/embed/FNLf4Dhh-WA?autoplay=1&mute=1&loop=1&playlist=FNLf4Dhh-WA&controls=0&start=13";
-    label.textContent = 'Music Off';
-    btn.style.color = 'var(--muted)';
-  } else {
-    player.src = "https://www.youtube.com/embed/FNLf4Dhh-WA?autoplay=1&mute=0&loop=1&playlist=FNLf4Dhh-WA&controls=0&start=13";
-    label.textContent = 'Music On';
-    btn.style.color = 'var(--color-accent)';
-  }
+const SONG_URL = "https://www.youtube.com/embed/FNLf4Dhh-WA?autoplay=1&mute=0&loop=1&playlist=FNLf4Dhh-WA&controls=0&start=13";
+const MUTE_URL = "https://www.youtube.com/embed/FNLf4Dhh-WA?autoplay=1&mute=1&loop=1&playlist=FNLf4Dhh-WA&controls=0&start=13";
+
+enterBtn.addEventListener('click', () => {
+  // Start music
+  player.src = SONG_URL;
+  // Fade out overlay
+  overlay.classList.add('hidden');
+  setTimeout(() => overlay.style.display = 'none', 900);
 });
+
+/* Mute/unmute toggle */
+musicBtn.addEventListener('click', () => {
+  muted = !muted;
+  player.src = muted ? MUTE_URL : SONG_URL;
+  label.textContent = muted ? 'Play' : 'Mute';
+  musicBtn.style.color = muted ? 'var(--muted)' : 'var(--color-accent)';
+});
+
+/* Hamburger — existing code unchanged below */
+const burger = document.querySelector('.nav-hamburger');
+const menu   = document.getElementById('mobile-menu');
+burger.addEventListener('click', () => {
+  const open = menu.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open);
+});
+document.querySelectorAll('.mobile-link').forEach(l => {
+  l.addEventListener('click', () => {
+    menu.classList.remove('open');
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded', false);
+  });
+});
+
+/* Nav hide on scroll */
+let lastY = 0;
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  nav.style.transform = (y > 80 && y > lastY) ? 'translateY(-100%)' : 'translateY(0)';
+  nav.style.transition = 'transform 0.3s';
+  lastY = y;
+}, { passive: true });
+
+/* FAQ accordion */
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+/* Countdown */
+function tick() {
+  const target = new Date('2027-05-21T15:30:00');
+  const diff = target - new Date();
+  if (diff <= 0) {
+    document.getElementById('countdown-bar').innerHTML =
+      '<p style="font-family:var(--font-script);font-size:3rem;color:var(--white)">Today\'s the day! 🎉</p>';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-days').textContent    = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent   = String(h).padStart(2,'0');
+  document.getElementById('cd-minutes').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-seconds').textContent = String(s).padStart(2,'0');
+}
+tick(); setInterval(tick, 1000);
+
 </script>
    
 </body>
