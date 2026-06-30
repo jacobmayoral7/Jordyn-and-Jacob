@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jordyn & Jacob — May 21, 2027</title>
+<title>Jordyn & Jacob</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Pinyon+Script&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -621,13 +621,17 @@ function enterSite() {
   setTimeout(function() { ov.remove(); }, 900);
 }
 
-/* ── Mute/unmute ── */
 var musicMuted = false;
 document.getElementById('music-btn').addEventListener('click', function() {
   var player = document.getElementById('yt-player');
   musicMuted = !musicMuted;
-  player.muted = musicMuted;
-  document.querySelector('.music-label').textContent = musicMuted ? 'Play' : 'Mute';
+  if (musicMuted) {
+    player.pause();
+    document.querySelector('.music-label').textContent = 'Play';
+  } else {
+    player.play().catch(function() {});
+    document.querySelector('.music-label').textContent = 'Mute';
+  }
 });
 
 /* ── Hamburger ── */
