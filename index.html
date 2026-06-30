@@ -1518,11 +1518,13 @@ const SONG_URL = "https://www.youtube.com/embed/FNLf4Dhh-WA?autoplay=1&mute=0&lo
 const MUTE_URL = "https://www.youtube.com/embed/FNLf4Dhh-WA?autoplay=1&mute=1&loop=1&playlist=FNLf4Dhh-WA&controls=0&start=13";
 
 enterBtn.addEventListener('click', () => {
-  // Start music
   player.src = SONG_URL;
-  // Fade out overlay
-  overlay.classList.add('hidden');
-  setTimeout(() => overlay.style.display = 'none', 900);
+  overlay.style.opacity = '0';
+  overlay.style.transition = 'opacity 0.8s ease';
+  overlay.style.pointerEvents = 'none';
+  setTimeout(() => {
+    overlay.style.display = 'none';
+  }, 850);
 });
 
 /* Mute/unmute toggle */
