@@ -1487,7 +1487,7 @@ document.querySelectorAll('.faq-q').forEach(q => {
 <div class="welcome-overlay" id="welcome-overlay">
   <div class="welcome-names">Jordyn &amp; Jacob</div>
   <div class="welcome-date">May 21, 2027 &nbsp;·&nbsp; Grass Valley, CA</div>
-  <button class="welcome-btn" id="welcome-btn">Enter</button>
+  <button class="welcome-btn" onclick="enterSite()">Enter</button>
   <p class="welcome-note">♪ Music will play on entry</p>
 </div>
 
@@ -1505,36 +1505,29 @@ document.querySelectorAll('.faq-q').forEach(q => {
 </button>
 
 <script>
-/* Welcome overlay + autoplay */
-const overlay  = document.getElementById('welcome-overlay');
-const enterBtn = document.getElementById('welcome-btn');
-const player   = document.getElementById('yt-player');
-const musicBtn = document.getElementById('music-btn');
-const label    = musicBtn.querySelector('.music-label');
-let muted = false;
+/* ── Welcome overlay ── */
+function enterSite() {
+  const ov = document.getElementById('welcome-overlay');
+  const player = document.getElementById('yt-player');
+  player.src = "https://www.youtube.com/embed/FNLf4Dhh-WA?autoplay=1&mute=0&loop=1&playlist=FNLf4Dhh-WA&controls=0&start=13";
+  ov.style.transition = 'opacity 0.8s ease';
+  ov.style.opacity = '0';
+  ov.style.pointerEvents = 'none';
+  setTimeout(() => ov.remove(), 850);
+}
 
+/* ── Mute/unmute toggle ── */
+let muted = false;
 const SONG_URL = "https://www.youtube.com/embed/FNLf4Dhh-WA?autoplay=1&mute=0&loop=1&playlist=FNLf4Dhh-WA&controls=0&start=13";
 const MUTE_URL = "https://www.youtube.com/embed/FNLf4Dhh-WA?autoplay=1&mute=1&loop=1&playlist=FNLf4Dhh-WA&controls=0&start=13";
 
-enterBtn.addEventListener('click', () => {
-  player.src = SONG_URL;
-  overlay.style.opacity = '0';
-  overlay.style.transition = 'opacity 0.8s ease';
-  overlay.style.pointerEvents = 'none';
-  setTimeout(() => {
-    overlay.style.display = 'none';
-  }, 850);
-});
-
-/* Mute/unmute toggle */
-musicBtn.addEventListener('click', () => {
+document.getElementById('music-btn').addEventListener('click', () => {
   muted = !muted;
-  player.src = muted ? MUTE_URL : SONG_URL;
-  label.textContent = muted ? 'Play' : 'Mute';
-  musicBtn.style.color = muted ? 'var(--muted)' : 'var(--color-accent)';
+  document.getElementById('yt-player').src = muted ? MUTE_URL : SONG_URL;
+  document.querySelector('.music-label').textContent = muted ? 'Play' : 'Mute';
 });
 
-/* Hamburger — existing code unchanged below */
+/* ── Hamburger ── */
 const burger = document.querySelector('.nav-hamburger');
 const menu   = document.getElementById('mobile-menu');
 burger.addEventListener('click', () => {
@@ -1550,7 +1543,7 @@ document.querySelectorAll('.mobile-link').forEach(l => {
   });
 });
 
-/* Nav hide on scroll */
+/* ── Nav hide on scroll ── */
 let lastY = 0;
 const nav = document.getElementById('main-nav');
 window.addEventListener('scroll', () => {
@@ -1560,7 +1553,7 @@ window.addEventListener('scroll', () => {
   lastY = y;
 }, { passive: true });
 
-/* FAQ accordion */
+/* ── FAQ accordion ── */
 document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', () => {
     const item = q.parentElement;
@@ -1570,13 +1563,13 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 });
 
-/* Countdown */
+/* ── Countdown ── */
 function tick() {
   const target = new Date('2027-05-21T15:30:00');
   const diff = target - new Date();
   if (diff <= 0) {
     document.getElementById('countdown-bar').innerHTML =
-      '<p style="font-family:var(--font-script);font-size:3rem;color:var(--white)">Today\'s the day! 🎉</p>';
+      "<p style='font-family:var(--font-script);font-size:3rem;color:var(--white)'>Today's the day! 🎉</p>";
     return;
   }
   const d = Math.floor(diff / 86400000);
@@ -1589,7 +1582,6 @@ function tick() {
   document.getElementById('cd-seconds').textContent = String(s).padStart(2,'0');
 }
 tick(); setInterval(tick, 1000);
-
 </script>
    
 </body>
