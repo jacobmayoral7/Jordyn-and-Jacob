@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSVP — Jordyn & Jacob</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Pinyon+Script&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep-pink:   #D9367C;
+  --hot-pink:    #F05A7E;
+  --coral:       #F48A74;
+  --amber:       #F4B97A;
+  --blush:       #F7C4C0;
+  --blush-light: #F8E6D8;
+  --forest:      #4F7A45;
+  --sage:        #7D9B6E;
+  --color-heading:    var(--forest);
+  --color-accent:     var(--hot-pink);
+  --color-accent-hov: var(--deep-pink);
+  --color-divider:    var(--amber);
+  --color-eyebrow:    var(--sage);
+  --font-script: 'Pinyon Script', cursive;
+  --font-serif:  'Cormorant Garamond', serif;
+  --font-sans:   'Raleway', sans-serif;
+  --white:    #FFFFFF;
+  --charcoal: #3A3229;
+  --muted:    #7A6E68;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  background: linear-gradient(135deg, var(--deep-pink) 0%, var(--hot-pink) 55%, var(--coral) 100%);
+  color: var(--charcoal);
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+a { text-decoration: none; }
+
+.rsvp-card {
+  background: var(--white);
+  max-width: 540px;
+  width: 100%;
+  padding: 4rem 3rem;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-eyebrow);
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-family: var(--font-script);
+  font-size: clamp(2.8rem, 8vw, 4rem);
+  color: var(--color-heading);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  max-width: 180px;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--blush);
+}
+.divider-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--color-divider);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.message {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: var(--charcoal);
+  line-height: 1.85;
+  margin-bottom: 2.5rem;
+}
+
+.message strong {
+  color: var(--color-heading);
+  font-weight: 500;
+}
+
+.back-btn {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.85rem 2.25rem;
+  background: var(--color-accent);
+  color: var(--white);
+  transition: background 0.2s;
+}
+.back-btn:hover { background: var(--color-accent-hov); }
+
+.contact-note {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 2rem;
+  line-height: 1.7;
+}
+.contact-note a {
+  color: var(--color-accent);
+  border-bottom: 1px solid var(--blush);
+}
+
+@media (max-width: 500px) {
+  .rsvp-card { padding: 3rem 1.75rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="rsvp-card">
+  <p class="eyebrow">Kindly Respond</p>
+  <h1 class="title">Not Quite Yet</h1>
+  <div class="divider"><div class="divider-dot"></div></div>
+  <p class="message">
+    RSVPs are not available at this time. We are putting together all the
+    final details and will open RSVPs soon — please check back later!
+    <br><br>
+    Thank you so much for your patience. We can't wait to celebrate with you.
+  </p>
+  <a href="index.html" class="back-btn">Back to Home</a>
+  <p class="contact-note">
+    Questions in the meantime? Reach out anytime:<br>
+    <a href="mailto:jacobandjordyn2027@gmail.com">jacobandjordyn2027@gmail.com</a>
+  </p>
+</div>
+
+</body>
+</html>
