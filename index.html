@@ -58,7 +58,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .mobile-menu a:last-child { border-bottom: none; color: var(--color-accent); }
 
 /* MUSIC BUTTON */
-.music-btn { position: fixed; top: 20px; right: 160px; z-index: 200; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-sans); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; padding: 0; }
+.music-btn { position: fixed; top: 20px; right: 112px; z-index: 200; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-sans); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; padding: 0; }
 .music-btn:hover { color: var(--color-accent); }
 .music-note { font-size: 1rem; line-height: 1; }
 
@@ -242,9 +242,9 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
   <p class="welcome-note">♪ Music will play on entry</p>
 </div>
 
-<!-- Hidden YouTube player -->
-<audio id="yt-player" loop style="display:none;">
-  <source src="https://www.youtube.com/embed/FNLf4Dhh-WA" type="audio/mpeg">
+<!-- Audio player (replaces YouTube iframe for mobile compatibility) -->
+<audio id="yt-player" loop preload="auto">
+  <source src="wedding-music.mp3" type="audio/mpeg">
 </audio>
 
 <!-- NAV -->
@@ -608,39 +608,25 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
   <div class="footer-bottom">© 2027 by J&amp;J</div>
 </footer>
 
-<!-- ONE SINGLE SCRIPT BLOCK — nothing duplicated -->
 <script>
 /* ── Enter site & start music ── */
 function enterSite() {
   var ov = document.getElementById('welcome-overlay');
+  var player = document.getElementById('yt-player');
+  player.currentTime = 13;
+  player.play().catch(function() {});
   ov.style.transition = 'opacity 0.8s ease';
   ov.style.opacity = '0';
   ov.style.pointerEvents = 'none';
   setTimeout(function() { ov.remove(); }, 900);
-
-  // Use Web Audio API to play YouTube audio on all devices
-  var AudioContext = window.AudioContext || window.webkitAudioContext;
-  if (!AudioContext) return;
-  var ctx = new AudioContext();
-  var SONG = 'https://www.youtube.com/embed/FNLf4Dhh-WA?autoplay=1&mute=0&loop=1&playlist=FNLf4Dhh-WA&controls=0&start=13';
-  var frame = document.createElement('iframe');
-  frame.id = 'yt-player';
-  frame.src = SONG;
-  frame.style.display = 'none';
-  frame.allow = 'autoplay';
-  document.body.appendChild(frame);
-  ctx.resume();
 }
 
 /* ── Mute/unmute ── */
 var musicMuted = false;
 document.getElementById('music-btn').addEventListener('click', function() {
-  musicMuted = !musicMuted;
   var player = document.getElementById('yt-player');
-  if (!player) return;
-  player.src = musicMuted
-    ? 'https://www.youtube.com/embed/FNLf4Dhh-WA?autoplay=1&mute=1&loop=1&playlist=FNLf4Dhh-WA&controls=0&start=13'
-    : 'https://www.youtube.com/embed/FNLf4Dhh-WA?autoplay=1&mute=0&loop=1&playlist=FNLf4Dhh-WA&controls=0&start=13';
+  musicMuted = !musicMuted;
+  player.muted = musicMuted;
   document.querySelector('.music-label').textContent = musicMuted ? 'Play' : 'Mute';
 });
 
