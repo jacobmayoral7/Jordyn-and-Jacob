@@ -635,8 +635,15 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
 function enterSite() {
   var ov = document.getElementById('welcome-overlay');
   var player = document.getElementById('yt-player');
-  player.currentTime = 13;
-  player.play().catch(function() {});
+  function startAtIntro() {
+    player.currentTime = 13;
+    player.play().catch(function() {});
+  }
+  if (player.readyState >= 1) {
+    startAtIntro();
+  } else {
+    player.addEventListener('loadedmetadata', startAtIntro, { once: true });
+  }
   ov.style.transition = 'opacity 0.8s ease';
   ov.style.opacity = '0';
   ov.style.pointerEvents = 'none';
