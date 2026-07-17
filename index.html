@@ -7,8 +7,14 @@
 <link rel="icon" type="image/svg+xml" href="favicon-cursive.svg">
 <meta property="og:title" content="Jordyn & Jacob">
 <meta property="og:description" content="May 21, 2027 · Grass Valley, CA">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Pinyon+Script&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
+@font-face {
+  font-family: 'Slight';
+  src: url('local-fonts/Slight-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 :root {
   --deep-pink:   #D9367C;
   --hot-pink:    #F05A7E;
@@ -29,7 +35,7 @@
   --color-bg:         var(--blush-light);
   --color-eyebrow:    var(--sage);
   --color-dark-bg:    var(--forest);
-  --font-script: 'Pinyon Script', cursive;
+  --font-script: 'Slight', cursive;
   --font-serif:  'Cormorant Garamond', serif;
   --font-sans:   'Raleway', sans-serif;
   --white:    #FFFFFF;
@@ -44,7 +50,7 @@ a { text-decoration: none; }
 
 /* NAV */
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--blush); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px; transition: transform 0.3s; }
-.nav-logo { font-family: var(--font-script); font-size: 2.1rem; color: var(--color-heading); line-height: 1; }
+.nav-logo { font-family: var(--font-script); font-weight: normal; font-size: 1.3rem; color: var(--color-heading); line-height: 1; }
 .nav-links { display: flex; gap: 1.75rem; list-style: none; }
 .nav-links a { font-family: var(--font-sans); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--charcoal); transition: color 0.2s; }
 .nav-links a:hover { color: var(--color-accent); }
@@ -67,7 +73,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 
 /* WELCOME OVERLAY */
 .welcome-overlay { position: fixed; inset: 0; z-index: 9999; background: var(--forest); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; transition: opacity 0.8s ease; }
-.welcome-names { font-family: var(--font-script); font-size: clamp(3.5rem, 12vw, 7rem); color: var(--white); line-height: 1; margin-bottom: 0.5rem; }
+.welcome-names { font-family: var(--font-script); font-weight: normal; font-size: clamp(1.5rem, 7vw, 4.2rem); color: var(--white); line-height: 1.5; margin-bottom: 2rem; }
 .welcome-date { font-family: var(--font-sans); font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--blush); margin-bottom: 2.5rem; }
 .welcome-btn { font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--forest); background: var(--white); border: none; padding: 0.9rem 2.5rem; cursor: pointer; transition: background 0.2s; }
 .welcome-btn:hover { background: var(--blush-light); }
@@ -88,7 +94,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 /* LAYOUT */
 .section-inner { max-width: 920px; margin: 0 auto; }
 .section-eyebrow { font-family: var(--font-sans); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--color-eyebrow); text-align: center; margin-bottom: 0.6rem; }
-.section-title { font-family: var(--font-script); font-size: clamp(2.6rem, 6vw, 4.8rem); color: var(--color-heading); text-align: center; line-height: 1.1; margin-bottom: 1.25rem; }
+.section-title { font-family: var(--font-script); font-weight: normal; font-size: clamp(2.2rem, 4.8vw, 3.8rem); color: var(--color-heading); text-align: center; line-height: 1.45; margin-bottom: 1.25rem; }
 .divider { display: flex; align-items: center; gap: 0.75rem; justify-content: center; margin: 0 auto 2.5rem; max-width: 220px; }
 .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--color-border); }
 .divider-dot { width: 5px; height: 5px; background: var(--color-divider); transform: rotate(45deg); flex-shrink: 0; }
@@ -106,7 +112,7 @@ section { padding: 5rem 2rem; }
 #hero { min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 90px 2rem 4rem; position: relative; overflow: hidden; }
 .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 55% at 50% 0%, rgba(240,90,126,0.09) 0%, transparent 70%), radial-gradient(ellipse 55% 40% at 80% 95%, rgba(244,185,122,0.11) 0%, transparent 60%); pointer-events: none; }
 .hero-eyebrow { font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--color-eyebrow); margin-bottom: 1.25rem; }
-.hero-names { font-family: var(--font-script); font-size: clamp(4.5rem, 13vw, 9.5rem); color: var(--color-heading); line-height: 1; margin-bottom: 1rem; }
+.hero-names { font-family: var(--font-script); font-weight: normal; font-size: clamp(2.7rem, 8vw, 5.7rem); color: var(--color-heading); line-height: 1.3; margin-bottom: 1.5rem; }
 .hero-rule { display: flex; align-items: center; gap: 1rem; justify-content: center; margin: 1.25rem 0; }
 .hero-rule::before, .hero-rule::after { content: ''; width: 80px; height: 1px; background: var(--color-divider); }
 .hero-diamond { width: 6px; height: 6px; background: var(--color-divider); transform: rotate(45deg); }
@@ -126,7 +132,7 @@ section { padding: 5rem 2rem; }
 .event-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2.5rem 0; }
 .event-card { background: var(--white); padding: 2.5rem 2rem; text-align: center; border: 1px solid var(--blush); box-shadow: 0 4px 20px rgba(58,50,41,0.05); }
 .event-icon { font-size: 1.2rem; color: var(--color-divider); margin-bottom: 0.9rem; }
-.event-title { font-family: var(--font-script); font-size: 2.1rem; color: var(--color-heading); margin-bottom: 1.1rem; }
+.event-title { font-family: var(--font-script); font-weight: normal; font-size: 1.3rem; color: var(--color-heading); margin-bottom: 1.1rem; }
 .event-card dt { font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--color-eyebrow); margin-top: 0.8rem; margin-bottom: 0.15rem; }
 .event-card dd { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 400; color: var(--charcoal); line-height: 1.55; }
 .details-cta { text-align: center; margin-top: 2.25rem; }
@@ -183,10 +189,10 @@ section { padding: 5rem 2rem; }
 .registry-body { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 300; color: var(--charcoal); line-height: 1.9; text-align: center; max-width: 660px; margin: 0 auto 2.5rem; }
 .registry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 0; }
 .registry-card { background: var(--white); padding: 2rem 1.5rem; text-align: center; border: 1px solid var(--blush); box-shadow: 0 4px 20px rgba(58,50,41,0.05); }
-.registry-store { font-family: var(--font-script); font-size: 2rem; color: var(--color-heading); margin-bottom: 0.4rem; line-height: 1.2; }
+.registry-store { font-family: var(--font-script); font-weight: normal; font-size: 1.25rem; color: var(--color-heading); margin-bottom: 0.4rem; line-height: 1.2; }
 .registry-note { font-family: var(--font-sans); font-size: 0.78rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.5; }
 .honeymoon-card { background: var(--white); border: 1px solid var(--blush); box-shadow: 0 4px 20px rgba(58,50,41,0.05); padding: 2.5rem 2rem; text-align: center; max-width: 420px; margin: 2rem auto 0; }
-.honeymoon-title { font-family: var(--font-script); font-size: 2.4rem; color: var(--color-heading); margin-bottom: 0.6rem; line-height: 1.2; }
+.honeymoon-title { font-family: var(--font-script); font-weight: normal; font-size: 1.5rem; color: var(--color-heading); margin-bottom: 0.6rem; line-height: 1.2; }
 .honeymoon-note { font-family: var(--font-sans); font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.4rem; }
 
 /* FAQ */
@@ -206,11 +212,11 @@ section { padding: 5rem 2rem; }
 
 /* FOOTER */
 footer { background: var(--color-dark-bg); color: var(--white); text-align: center; padding: 3.5rem 2rem 2.5rem; }
-.footer-names { font-family: var(--font-script); font-size: 3.2rem; color: var(--white); margin-bottom: 0.4rem; line-height: 1.1; }
+.footer-names { font-family: var(--font-script); font-weight: normal; font-size: 1.9rem; color: var(--white); margin-bottom: 0.4rem; line-height: 1.1; }
 .footer-date { font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blush); margin-bottom: 1.5rem; }
 .footer-contacts { font-family: var(--font-sans); font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 2; }
 .footer-contacts a { color: rgba(255,255,255,0.75); }
-.footer-see { font-family: var(--font-script); font-size: 1.8rem; color: var(--blush); margin-bottom: 1.25rem; }
+.footer-see { font-family: var(--font-script); font-weight: normal; font-size: 1.1rem; color: var(--blush); margin-bottom: 1.25rem; }
 .footer-bottom { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.13); font-family: var(--font-sans); font-size: 0.65rem; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; }
 
 /* MOBILE */
@@ -222,10 +228,10 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
   .music-btn { top: 20px; right: 56px; font-size: 0; padding: 6px; }
   .music-note { font-size: 1.1rem; }
   section { padding: 6rem 1.25rem 3.5rem; }
-  .section-title { font-size: clamp(2rem, 10vw, 3.2rem); }
+  .section-title { font-size: clamp(1.6rem, 7.5vw, 2.4rem); }
   .section-body { font-size: 1.05rem; }
   #hero { padding: 96px 1.5rem 3rem; }
-  .hero-names { font-size: clamp(3.4rem, 16vw, 5.5rem); }
+  .hero-names { font-size: clamp(2rem, 10vw, 3.3rem); }
   .hero-rule::before, .hero-rule::after { width: 50px; }
   .hero-location { font-size: 0.68rem; letter-spacing: 0.12em; margin-bottom: 2rem; }
   .btn { width: 100%; text-align: center; padding: 0.9rem 1.5rem; }
@@ -240,10 +246,10 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
   .rsvp-options { flex-direction: column; align-items: center; }
   .rsvp-option { width: 100%; max-width: 340px; }
   footer { padding: 2.5rem 1.25rem 2rem; }
-  .footer-names { font-size: 2.5rem; }
+  .footer-names { font-size: 1.5rem; }
 }
 @media (max-width: 380px) {
-  .hero-names { font-size: 3rem; }
+  .hero-names { font-size: 1.8rem; }
   .cd-num { font-size: 1.9rem; }
   .cd-grid { gap: 0.6rem; }
 }
@@ -518,7 +524,7 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
 <section id="rsvp">
   <div class="section-inner">
     <p class="section-eyebrow">Kindly Respond</p>
-    <h2 class="section-title">Jordyn &amp; Jacob's Big Day</h2>
+    <h2 class="section-title">Jordyn &amp; Jacob's<br>Big Day</h2>
     <div class="divider"><div class="divider-dot"></div></div>
     <p class="rsvp-body">We are so excited to celebrate our wedding with you! Please let us know if you can join us. Your presence would make our day truly special.</p>
     <div class="rsvp-options">
@@ -713,7 +719,7 @@ function tick() {
   var target = new Date('2027-05-21T15:30:00');
   var diff = target - new Date();
   if (diff <= 0) {
-    document.getElementById('countdown-bar').innerHTML = "<p style='font-family:var(--font-script);font-size:3rem;color:white'>Today's the day! 🎉</p>";
+    document.getElementById('countdown-bar').innerHTML = "<p style='font-family:var(--font-script);font-weight:normal;font-size:1.8rem;color:white'>Today's the day! 🎉</p>";
     return;
   }
   var d = Math.floor(diff / 86400000);
