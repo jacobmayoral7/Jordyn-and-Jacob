@@ -75,7 +75,14 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 
 /* PAGES (app-shell routing) */
 .page { display: none; }
-.page.active { display: block; }
+.page.active { display: block; animation: pageFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page.active { animation: none; }
+}
 .nav-links a.active-link, .mobile-link.active-link { color: var(--color-accent); }
 
 /* LAYOUT */
@@ -190,8 +197,10 @@ section { padding: 5rem 2rem; }
 .faq-q { font-family: var(--font-serif); font-size: 1.08rem; font-weight: 500; color: var(--charcoal); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; user-select: none; padding: 1.25rem 0; }
 .faq-q::after { content: '+'; font-size: 1.4rem; color: var(--color-accent); font-weight: 300; flex-shrink: 0; transition: transform 0.2s; line-height: 1; }
 .faq-item.open .faq-q::after { transform: rotate(45deg); }
-.faq-a { font-family: var(--font-sans); font-size: 0.88rem; color: var(--muted); line-height: 1.75; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; }
-.faq-item.open .faq-a { max-height: 400px; padding-bottom: 1.25rem; }
+.faq-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.faq-item.open .faq-a { grid-template-rows: 1fr; }
+.faq-a-inner { font-family: var(--font-sans); font-size: 0.88rem; color: var(--muted); line-height: 1.75; overflow: hidden; min-height: 0; }
+.faq-item.open .faq-a-inner { padding-bottom: 1.25rem; }
 .faq-contact { font-family: var(--font-sans); font-size: 0.82rem; color: var(--muted); text-align: center; margin-top: 2rem; line-height: 1.7; }
 .faq-contact a { color: var(--color-accent); }
 
@@ -562,15 +571,15 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-q">What is the date and time of the wedding?</div>
-        <div class="faq-a">May 21, 2027 at 3:30 PM. We recommend you arrive 15–30 minutes early to allow time for parking and seating.</div>
+        <div class="faq-a"><div class="faq-a-inner">May 21, 2027 at 3:30 PM. We recommend you arrive 15–30 minutes early to allow time for parking and seating.</div></div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Where are the ceremony and reception located?</div>
-        <div class="faq-a">The ceremony is at Saint Patrick Catholic Church and the reception is at a private residence. Both addresses are located on the home page. They are a 7-minute drive from each other.</div>
+        <div class="faq-a"><div class="faq-a-inner">The ceremony is at Saint Patrick Catholic Church and the reception is at a private residence. Both addresses are located on the home page. They are a 7-minute drive from each other.</div></div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Is there a dress code?</div>
-        <div class="faq-a">Yes! Our dress code is garden party formal. We kindly ask guests to wear cocktail attire in soft, romantic colors if possible. Think dresses, suits, and spring/summer wedding guest outfits. We just ask that you avoid casual clothing like jeans, shorts, or sneakers.
+        <div class="faq-a"><div class="faq-a-inner">Yes! Our dress code is garden party formal. We kindly ask guests to wear cocktail attire in soft, romantic colors if possible. Think dresses, suits, and spring/summer wedding guest outfits. We just ask that you avoid casual clothing like jeans, shorts, or sneakers.
           <div style="margin-top:1rem;">
             <p style="font-family:var(--font-sans);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:0.6rem;">Wedding Color Palette</p>
             <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
@@ -581,31 +590,31 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
               <div style="width:36px;height:36px;background:#4F7A45;border-radius:3px;"></div>
             </div>
           </div>
-        </div>
+        </div></div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Will parking be available at the wedding venue?</div>
-        <div class="faq-a">Yes. The church offers street parking nearby. The reception venue has a parking lot directly next to the space, with additional overflow parking available within a short walking distance.</div>
+        <div class="faq-a"><div class="faq-a-inner">Yes. The church offers street parking nearby. The reception venue has a parking lot directly next to the space, with additional overflow parking available within a short walking distance.</div></div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Can I bring a plus-one to the wedding?</div>
-        <div class="faq-a">We are only able to accommodate guests specifically named on the invitation. Thank you so much for understanding — we're so excited to celebrate with you!</div>
+        <div class="faq-a"><div class="faq-a-inner">We are only able to accommodate guests specifically named on the invitation. Thank you so much for understanding — we're so excited to celebrate with you!</div></div>
       </div>
       <div class="faq-item">
         <div class="faq-q">What is the RSVP deadline, and how do I respond?</div>
-        <div class="faq-a">We kindly ask that you respond by Friday, April 2, 2027! You can RSVP by clicking <a href="rsvp.html" target="_blank" style="color:var(--color-accent);border-bottom:1px solid var(--blush);">here</a>.</div>
+        <div class="faq-a"><div class="faq-a-inner">We kindly ask that you respond by Friday, April 2, 2027! You can RSVP by clicking <a href="rsvp.html" target="_blank" style="color:var(--color-accent);border-bottom:1px solid var(--blush);">here</a>.</div></div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Are children invited?</div>
-        <div class="faq-a">While we truly adore your children, our wedding will be adults only, with the exception of immediate family children. We're excited to celebrate with you and hope you enjoy a fun weekend getaway!</div>
+        <div class="faq-a"><div class="faq-a-inner">While we truly adore your children, our wedding will be adults only, with the exception of immediate family children. We're excited to celebrate with you and hope you enjoy a fun weekend getaway!</div></div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Do you have a registry?</div>
-        <div class="faq-a">Yes we do! Head over to our Registry tab — we're registered with Zola.</div>
+        <div class="faq-a"><div class="faq-a-inner">Yes we do! Head over to our Registry tab — we're registered with Zola.</div></div>
       </div>
       <div class="faq-item">
         <div class="faq-q">Will vegetarian or special dietary meals be available at the wedding?</div>
-        <div class="faq-a"></div>
+        <div class="faq-a"><div class="faq-a-inner"></div></div>
       </div>
     </div>
     <p class="faq-contact">Still have a question? Reach out anytime:<br>
