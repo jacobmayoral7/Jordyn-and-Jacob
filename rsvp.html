@@ -5,8 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RSVP — Jordyn & Jacob</title>
 <link rel="icon" type="image/svg+xml" href="favicon-cursive.svg">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Pinyon+Script&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
+@font-face {
+  font-family: 'Slight';
+  src: url('local-fonts/Slight-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 :root {
   --deep-pink:   #D9367C;
   --hot-pink:    #F05A7E;
@@ -21,7 +27,7 @@
   --color-accent-hov: var(--deep-pink);
   --color-divider:    var(--amber);
   --color-eyebrow:    var(--sage);
-  --font-script: 'Pinyon Script', cursive;
+  --font-script: 'Slight', cursive;
   --font-serif:  'Cormorant Garamond', serif;
   --font-sans:   'Raleway', sans-serif;
   --white:    #FFFFFF;
@@ -63,9 +69,10 @@ a { text-decoration: none; }
 
 .title {
   font-family: var(--font-script);
-  font-size: clamp(2.8rem, 8vw, 4rem);
+  font-weight: normal;
+  font-size: clamp(2.2rem, 7vw, 3.4rem);
   color: var(--color-heading);
-  line-height: 1.1;
+  line-height: 1.35;
   margin-bottom: 1.5rem;
 }
 
