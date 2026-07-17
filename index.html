@@ -24,7 +24,7 @@
   --color-heading:    var(--forest);
   --color-accent:     var(--hot-pink);
   --color-accent-hov: var(--deep-pink);
-  --color-divider:    var(--amber);
+  --color-divider:    var(--sage);
   --color-border:     var(--blush);
   --color-bg:         var(--blush-light);
   --color-eyebrow:    var(--sage);
@@ -73,6 +73,11 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .welcome-btn:hover { background: var(--blush-light); }
 .welcome-note { font-family: var(--font-sans); font-size: 0.65rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.4); margin-top: 1.25rem; }
 
+/* PAGES (app-shell routing) */
+.page { display: none; }
+.page.active { display: block; }
+.nav-links a.active-link, .mobile-link.active-link { color: var(--color-accent); }
+
 /* LAYOUT */
 .section-inner { max-width: 920px; margin: 0 auto; }
 .section-eyebrow { font-family: var(--font-sans); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--color-eyebrow); text-align: center; margin-bottom: 0.6rem; }
@@ -111,8 +116,8 @@ section { padding: 5rem 2rem; }
 
 /* DETAILS */
 #details { background: var(--white); }
-.event-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 2.5rem 0; background: var(--blush); }
-.event-card { background: var(--white); padding: 2.5rem 2rem; text-align: center; }
+.event-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2.5rem 0; }
+.event-card { background: var(--white); padding: 2.5rem 2rem; text-align: center; border: 1px solid var(--blush); box-shadow: 0 4px 20px rgba(58,50,41,0.05); }
 .event-icon { font-size: 1.2rem; color: var(--color-divider); margin-bottom: 0.9rem; }
 .event-title { font-family: var(--font-script); font-size: 2.1rem; color: var(--color-heading); margin-bottom: 1.1rem; }
 .event-card dt { font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--color-eyebrow); margin-top: 0.8rem; margin-bottom: 0.15rem; }
@@ -140,14 +145,14 @@ section { padding: 5rem 2rem; }
 .travel-sub { font-family: var(--font-sans); font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--color-eyebrow); text-align: center; margin: 3rem 0 1rem; }
 .travel-intro { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 300; color: var(--muted); text-align: center; max-width: 580px; margin: 0 auto 1.75rem; line-height: 1.8; }
 .hotel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; background: transparent; margin-bottom: 0.5rem; }
-.hotel-card { background: var(--white); padding: 1.6rem 1.5rem; border: 1px solid var(--blush); }
+.hotel-card { background: var(--white); padding: 1.6rem 1.5rem; border: 1px solid var(--blush); box-shadow: 0 4px 20px rgba(58,50,41,0.05); }
 .hotel-name { font-family: var(--font-serif); font-size: 1.08rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.2rem; }
 .hotel-dist { font-family: var(--font-sans); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-eyebrow); margin-bottom: 0.5rem; }
 .hotel-addr { font-family: var(--font-sans); font-size: 0.8rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
 .btn-sm { font-family: var(--font-sans); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; padding: 0.5rem 1.1rem; border: 1px solid var(--color-accent); color: var(--color-heading); background: transparent; display: inline-block; transition: all 0.2s; }
 .btn-sm:hover { background: var(--color-accent); color: var(--white); }
 .todo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; background: transparent; }
-.todo-card { background: var(--white); padding: 1.6rem 1.5rem; border: 1px solid var(--blush); }
+.todo-card { background: var(--white); padding: 1.6rem 1.5rem; border: 1px solid var(--blush); box-shadow: 0 4px 20px rgba(58,50,41,0.05); }
 .todo-name { font-family: var(--font-serif); font-size: 1.08rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.5rem; }
 .todo-desc { font-family: var(--font-sans); font-size: 0.8rem; color: var(--muted); line-height: 1.55; margin-bottom: 1rem; }
 
@@ -169,11 +174,11 @@ section { padding: 5rem 2rem; }
 /* REGISTRY */
 #registry { background: var(--white); }
 .registry-body { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 300; color: var(--charcoal); line-height: 1.9; text-align: center; max-width: 660px; margin: 0 auto 2.5rem; }
-.registry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px; background: var(--blush); margin-bottom: 2px; }
-.registry-card { background: var(--white); padding: 2rem 1.5rem; text-align: center; }
+.registry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 0; }
+.registry-card { background: var(--white); padding: 2rem 1.5rem; text-align: center; border: 1px solid var(--blush); box-shadow: 0 4px 20px rgba(58,50,41,0.05); }
 .registry-store { font-family: var(--font-script); font-size: 2rem; color: var(--color-heading); margin-bottom: 0.4rem; line-height: 1.2; }
 .registry-note { font-family: var(--font-sans); font-size: 0.78rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.5; }
-.honeymoon-card { background: var(--white); border: 2px solid var(--blush); padding: 2.5rem 2rem; text-align: center; max-width: 420px; margin: 2rem auto 0; }
+.honeymoon-card { background: var(--white); border: 1px solid var(--blush); box-shadow: 0 4px 20px rgba(58,50,41,0.05); padding: 2.5rem 2rem; text-align: center; max-width: 420px; margin: 2rem auto 0; }
 .honeymoon-title { font-family: var(--font-script); font-size: 2.4rem; color: var(--color-heading); margin-bottom: 0.6rem; line-height: 1.2; }
 .honeymoon-note { font-family: var(--font-sans); font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.4rem; }
 
@@ -252,7 +257,7 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
 
 <!-- NAV -->
 <nav id="main-nav">
-  <a href="#hero" class="nav-logo">J &amp; J</a>
+  <a href="#home" class="nav-logo">J &amp; J</a>
   <ul class="nav-links">
     <li><a href="#story">Our Story</a></li>
     <li><a href="#schedule">Schedule</a></li>
@@ -280,6 +285,7 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
   <a href="#faq"      class="mobile-link">FAQ</a>
 </div>
 
+<div id="page-home" class="page">
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
@@ -309,7 +315,7 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
     <h2 class="section-title">Our Next Chapter is About to Begin</h2>
     <div class="divider"><div class="divider-dot"></div></div>
     <p class="section-body">Here you'll find all the details you need for our wedding day. We can't wait to celebrate with you!</p>
-    <div class="event-cards" style="background:transparent;gap:1.5rem;">
+    <div class="event-cards">
       <div class="event-card">
         <div class="event-icon">✦</div>
         <div class="event-title">Ceremony</div>
@@ -327,7 +333,7 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
         </dl>
       </div>
     </div>
-    <div class="event-cards" style="grid-template-columns:1fr;max-width:380px;margin:2px auto 0;background:transparent;">
+    <div class="event-cards" style="grid-template-columns:1fr;max-width:380px;margin:1.5rem auto 0;">
       <div class="event-card">
         <div class="event-icon">✦</div>
         <div class="event-title">Brunch</div>
@@ -342,8 +348,10 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
     </div>
   </div>
 </section>
+</div>
 
 <!-- OUR STORY -->
+<div id="page-story" class="page">
 <section id="story">
   <div class="section-inner">
     <p class="section-eyebrow">Our Story</p>
@@ -358,8 +366,10 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
     </div>
   </div>
 </section>
+</div>
 
 <!-- SCHEDULE -->
+<div id="page-schedule" class="page">
 <section id="schedule">
   <div class="section-inner">
     <p class="section-eyebrow">Wedding Schedule</p>
@@ -422,8 +432,10 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
     </div>
   </div>
 </section>
+</div>
 
 <!-- TRAVEL & STAY -->
+<div id="page-travel" class="page">
 <section id="travel">
   <div class="section-inner">
     <p class="section-eyebrow">For Our Traveling Guests</p>
@@ -490,8 +502,10 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
     </div>
   </div>
 </section>
+</div>
 
 <!-- RSVP -->
+<div id="page-rsvp" class="page">
 <section id="rsvp">
   <div class="section-inner">
     <p class="section-eyebrow">Kindly Respond</p>
@@ -511,8 +525,10 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
     </p>
   </div>
 </section>
+</div>
 
 <!-- REGISTRY -->
+<div id="page-registry" class="page">
 <section id="registry">
   <div class="section-inner">
     <p class="section-eyebrow">Registry</p>
@@ -533,8 +549,10 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
     </div>
   </div>
 </section>
+</div>
 
 <!-- FAQ -->
+<div id="page-faq" class="page">
 <section id="faq">
   <div class="section-inner">
     <p class="section-eyebrow">You've Got Questions</p>
@@ -595,6 +613,7 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
     </p>
   </div>
 </section>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -692,6 +711,41 @@ function tick() {
 }
 tick();
 setInterval(tick, 1000);
+
+/* ── App-shell router (keeps audio playing across "page" navigation) ── */
+var ROUTES = ['home', 'story', 'schedule', 'travel', 'rsvp', 'registry', 'faq'];
+var PAGE_TITLES = {
+  home: 'Jordyn and Jacob',
+  story: 'Our Story · Jordyn and Jacob',
+  schedule: 'Schedule · Jordyn and Jacob',
+  travel: 'Travel & Stay · Jordyn and Jacob',
+  rsvp: 'RSVP · Jordyn and Jacob',
+  registry: 'Registry · Jordyn and Jacob',
+  faq: 'FAQ · Jordyn and Jacob'
+};
+
+function currentRoute() {
+  var hash = location.hash.replace('#', '');
+  if (hash === 'hero') return 'home';
+  return ROUTES.indexOf(hash) !== -1 ? hash : 'home';
+}
+
+function showRoute(route) {
+  ROUTES.forEach(function(r) {
+    var page = document.getElementById('page-' + r);
+    if (page) page.classList.toggle('active', r === route);
+  });
+  document.title = PAGE_TITLES[route] || PAGE_TITLES.home;
+  document.querySelectorAll('.nav-links a, .mobile-link').forEach(function(a) {
+    var target = a.getAttribute('href').replace('#', '') || 'home';
+    if (target === 'hero') target = 'home';
+    a.classList.toggle('active-link', target === route);
+  });
+  window.scrollTo({ top: 0, behavior: 'auto' });
+}
+
+window.addEventListener('hashchange', function() { showRoute(currentRoute()); });
+showRoute(currentRoute());
 </script>
 
 </body>
