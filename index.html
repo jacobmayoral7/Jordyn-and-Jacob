@@ -759,10 +759,16 @@ function enterSite() {
   } else {
     player.addEventListener('loadedmetadata', startAtIntro, { once: true });
   }
+  var passcodeInput = document.getElementById('passcode-input');
+  if (passcodeInput) passcodeInput.blur();
+  window.scrollTo(0, 0);
   ov.style.transition = 'opacity 0.8s ease';
   ov.style.opacity = '0';
   ov.style.pointerEvents = 'none';
-  setTimeout(function() { ov.remove(); }, 900);
+  setTimeout(function() {
+    ov.remove();
+    window.scrollTo(0, 0);
+  }, 900);
 }
 
 var musicMuted = false;
