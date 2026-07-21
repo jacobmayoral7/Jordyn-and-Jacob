@@ -79,6 +79,29 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .welcome-btn { font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--forest); background: var(--white); border: none; padding: 0.9rem 2.5rem; cursor: pointer; transition: background 0.2s; }
 .welcome-btn:hover { background: var(--blush-light); }
 .welcome-note { font-family: var(--font-sans); font-size: 0.65rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.4); margin-top: 1.25rem; }
+.passcode-box { display: none; flex-direction: column; align-items: center; }
+.passcode-input {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--forest);
+  background: var(--white);
+  border: none;
+  padding: 0.9rem 2.5rem;
+  width: 220px;
+  max-width: 60vw;
+  outline: none;
+  transition: box-shadow 0.15s;
+}
+.passcode-input::placeholder { color: rgba(79,122,69,0.4); }
+.passcode-input.error { box-shadow: 0 0 0 2px var(--hot-pink); animation: passcode-shake 0.4s; }
+@keyframes passcode-shake {
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
 
 /* CARD HOVER LIFT */
 .event-card:hover, .hotel-card:hover, .todo-card:hover, .registry-card:hover, .honeymoon-card:hover {
@@ -304,8 +327,11 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
 <div class="welcome-overlay" id="welcome-overlay">
   <div class="welcome-names">Jordyn &amp; Jacob</div>
   <div class="welcome-date">May 21, 2027 &nbsp;·&nbsp; Grass Valley, CA</div>
-  <button class="welcome-btn" onclick="enterSite()">Enter</button>
-  <p class="welcome-note">♪ Music will play on entry</p>
+  <button class="welcome-btn" id="welcome-enter-btn" onclick="showPasscode()">Enter</button>
+  <div class="passcode-box" id="passcode-box">
+    <input type="text" class="passcode-input" id="passcode-input" placeholder="Passcode" autocomplete="off" autocapitalize="off" spellcheck="false">
+  </div>
+  <p class="welcome-note" id="welcome-note">♪ Music will play on entry</p>
 </div>
 
 <!-- Audio player (replaces YouTube iframe for mobile compatibility) -->
@@ -689,6 +715,36 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
 </footer>
 
 <script>
+/* ── Passcode gate ── */
+var SITE_PASSCODE = 'partytime';
+
+function showPasscode() {
+  document.getElementById('welcome-enter-btn').style.display = 'none';
+  document.getElementById('welcome-note').style.display = 'none';
+  var box = document.getElementById('passcode-box');
+  box.style.display = 'flex';
+  var input = document.getElementById('passcode-input');
+  input.focus();
+}
+
+(function() {
+  var input = document.getElementById('passcode-input');
+  function checkPasscode() {
+    if (input.value.trim().toLowerCase() === SITE_PASSCODE) {
+      input.removeEventListener('input', checkPasscode);
+      enterSite();
+    }
+  }
+  input.addEventListener('input', checkPasscode);
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && input.value.trim().toLowerCase() !== SITE_PASSCODE) {
+      input.classList.remove('error');
+      void input.offsetWidth;
+      input.classList.add('error');
+    }
+  });
+})();
+
 /* ── Enter site & start music ── */
 function enterSite() {
   var ov = document.getElementById('welcome-overlay');
