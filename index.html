@@ -189,18 +189,16 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-accent); 
 .hero-location { font-family: var(--font-sans); font-size: 0.75rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 2.75rem; }
 
 /* COUNTDOWN */
-#countdown-bar { background: var(--color-dark-bg); color: var(--white); text-align: center; padding: 2.75rem 2rem; position: relative; }
-#countdown-bar::before, #countdown-bar::after { content: ''; position: absolute; left: 0; right: 0; height: 36px; pointer-events: none; }
-#countdown-bar::before { top: 0; background: linear-gradient(to bottom, var(--color-bg), transparent); }
-#countdown-bar::after { bottom: 0; background: linear-gradient(to top, var(--white), transparent); }
-.cd-label { font-family: var(--font-sans); font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--blush); margin-bottom: 1.4rem; }
-.cd-grid { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
-.cd-unit { text-align: center; min-width: 64px; }
-.cd-num { font-family: var(--font-serif); font-size: 2.8rem; font-weight: 300; line-height: 1; display: block; }
-.cd-word { font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--blush); margin-top: 0.2rem; }
+#countdown-bar { text-align: center; padding: 0 1.5rem 4.5rem; margin-top: -2.25rem; position: relative; display: flex; justify-content: center; }
+#countdown-card { background: var(--color-dark-bg); color: var(--white); padding: 2.75rem 3rem 3.25rem; border-top: 3px solid var(--amber); box-shadow: 0 28px 60px -18px rgba(35,58,29,0.5), 0 4px 14px rgba(0,0,0,0.1); max-width: 640px; width: 100%; }
+.cd-label { font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blush); margin-bottom: 1.85rem; }
+.cd-grid { display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap; }
+.cd-unit { text-align: center; min-width: 70px; }
+.cd-num { font-family: var(--font-serif); font-size: clamp(2.6rem, 6vw, 4rem); font-weight: 300; line-height: 1; display: block; }
+.cd-word { font-family: var(--font-sans); font-size: 0.64rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--blush); margin-top: 0.4rem; }
 
 /* DETAILS */
-#details { background: var(--white); }
+#details { background: var(--color-bg); }
 .event-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2.5rem 0; }
 .event-card { background: var(--white); padding: 2.5rem 2rem; text-align: center; border: 1px solid var(--blush); box-shadow: 0 1px 2px rgba(58,50,41,0.04), 0 16px 32px -16px rgba(58,50,41,0.12); transition: transform 0.4s cubic-bezier(0.32,0.72,0,1), box-shadow 0.4s cubic-bezier(0.32,0.72,0,1); }
 .event-icon { font-size: 1.2rem; color: var(--color-divider); margin-bottom: 0.9rem; }
@@ -213,9 +211,12 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-accent); 
 #story { background: var(--color-bg); }
 .story-paras p { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 300; color: var(--charcoal); line-height: 1.9; text-align: center; max-width: 680px; margin: 0 auto 1.5rem; }
 .story-paras p:last-child { margin-bottom: 0; }
+.story-chapter { margin-bottom: 3rem; }
+.story-chapter:last-child { margin-bottom: 0; }
+.story-heading { font-family: var(--font-script); font-weight: normal; font-size: 1.5rem; color: var(--color-heading); text-align: center; margin-bottom: 1.25rem; padding-top: 0.2em; }
 
 /* SCHEDULE */
-#schedule { background: var(--white); }
+#schedule { background: var(--color-bg); }
 .timeline { max-width: 540px; margin: 0 auto; position: relative; padding-left: 2rem; }
 .timeline::before { content: ''; position: absolute; left: 0; top: 6px; bottom: 6px; width: 1px; background: var(--color-border); }
 .tl-item { position: relative; padding: 0 0 2.25rem 1.75rem; }
@@ -258,7 +259,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-accent); 
 .rsvp-help a { color: rgba(255,255,255,0.9); border-bottom: 1px solid rgba(255,255,255,0.4); }
 
 /* REGISTRY */
-#registry { background: var(--white); }
+#registry { background: var(--color-bg); }
 .registry-body { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 300; color: var(--charcoal); line-height: 1.9; text-align: center; max-width: 660px; margin: 0 auto 2.5rem; }
 .registry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 0; }
 .registry-card { background: var(--white); padding: 2rem 1.5rem; text-align: center; border: 1px solid var(--blush); box-shadow: 0 1px 2px rgba(58,50,41,0.04), 0 16px 32px -16px rgba(58,50,41,0.12); transition: transform 0.4s cubic-bezier(0.32,0.72,0,1), box-shadow 0.4s cubic-bezier(0.32,0.72,0,1); }
@@ -309,10 +310,10 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
   .hero-rule::before, .hero-rule::after { width: 50px; }
   .hero-location { font-size: 0.68rem; letter-spacing: 0.12em; margin-bottom: 2rem; }
   .btn { width: 100%; text-align: center; padding: 0.9rem 1.5rem; }
-  #countdown-bar { padding: 2rem 1.25rem; }
-  .cd-grid { gap: 1rem; }
-  .cd-num { font-size: 2.2rem; }
-  .cd-unit { min-width: 56px; }
+  #countdown-bar { padding: 0 1rem 3rem; margin-top: -1.5rem; }
+  #countdown-card { padding: 2.25rem 1.5rem 2.5rem; }
+  .cd-grid { gap: 1.25rem; }
+  .cd-unit { min-width: 60px; }
   .event-cards { grid-template-columns: 1fr; }
   .event-card { padding: 2rem 1.5rem; }
   .timeline { padding-left: 1.5rem; }
@@ -324,8 +325,8 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
 }
 @media (max-width: 380px) {
   .hero-names { font-size: 1.8rem; }
-  .cd-num { font-size: 1.9rem; }
-  .cd-grid { gap: 0.6rem; }
+  .cd-grid { gap: 0.75rem; }
+  .cd-unit { min-width: 52px; }
 }
 </style>
 </head>
@@ -391,12 +392,14 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
 
 <!-- COUNTDOWN -->
 <div id="countdown-bar">
-  <p class="cd-label">Counting down to the big day</p>
-  <div class="cd-grid">
-    <div class="cd-unit"><span class="cd-num" id="cd-days">—</span><span class="cd-word">Days</span></div>
-    <div class="cd-unit"><span class="cd-num" id="cd-hours">—</span><span class="cd-word">Hours</span></div>
-    <div class="cd-unit"><span class="cd-num" id="cd-minutes">—</span><span class="cd-word">Minutes</span></div>
-    <div class="cd-unit"><span class="cd-num" id="cd-seconds">—</span><span class="cd-word">Seconds</span></div>
+  <div id="countdown-card">
+    <p class="cd-label">Counting down to the big day</p>
+    <div class="cd-grid">
+      <div class="cd-unit"><span class="cd-num" id="cd-days">—</span><span class="cd-word">Days</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-hours">—</span><span class="cd-word">Hours</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-minutes">—</span><span class="cd-word">Minutes</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-seconds">—</span><span class="cd-word">Seconds</span></div>
+    </div>
   </div>
 </div>
 
@@ -450,11 +453,20 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
     <h2 class="section-title">It All Started at Disneyland</h2>
     <div class="divider"><div class="divider-dot"></div></div>
     <div class="story-paras">
-      <p>It all started in 2019 when we met at Disneyland during college. What began as a friendship through our shared friend group quickly grew into something more as we spent the summer texting and getting to know each other.</p>
-      <p>At the start of our sophomore year, Jacob asked me out, and the rest is history. Many of our first dates were spent wandering Disneyland together, creating memories that would become the foundation of our relationship.</p>
-      <p>Over the next six years, we learned that love isn't measured by distance. Whether we were driving for hours, catching flights to see each other, or navigating long distance seasons, every mile was worth it. Along the way, I successfully converted Jacob into a cat person, we explored Europe together, watched more movies than we can count, and built a life filled with laughter, adventure, and unwavering support.</p>
-      <p>On our sixth anniversary, we returned to Monterey, the place where we celebrated our very first anniversary. While driving along the breathtaking 17-Mile Drive, Jacob asked me to marry him. As if that moment wasn't perfect enough, our closest friends and family surprised me (of course Jacob knew), waiting to celebrate with us.</p>
-      <p>Now we're looking forward to our greatest adventure yet and can't wait to celebrate the beginning of this new chapter with all of you.</p>
+      <div class="story-chapter">
+        <div class="story-heading">How We Met</div>
+        <p>It all started in 2019 when we met at Disneyland during college. What began as a friendship through our shared friend group quickly grew into something more as we spent the summer texting and getting to know each other.</p>
+      </div>
+      <div class="story-chapter">
+        <div class="story-heading">Dating</div>
+        <p>At the start of our sophomore year, Jacob asked me out, and the rest is history. Many of our first dates were spent wandering Disneyland together, creating memories that would become the foundation of our relationship.</p>
+        <p>Over the next six years, we learned that love isn't measured by distance. Whether we were driving for hours, catching flights to see each other, or navigating long distance seasons, every mile was worth it. Along the way, I successfully converted Jacob into a cat person, we explored Europe together, watched more movies than we can count, and built a life filled with laughter, adventure, and unwavering support.</p>
+      </div>
+      <div class="story-chapter">
+        <div class="story-heading">The Engagement</div>
+        <p>On our sixth anniversary, we returned to Monterey, the place where we celebrated our very first anniversary. While driving along the breathtaking 17-Mile Drive, Jacob asked me to marry him. As if that moment wasn't perfect enough, our closest friends and family surprised me (of course Jacob knew), waiting to celebrate with us.</p>
+        <p>Now we're looking forward to our greatest adventure yet and can't wait to celebrate the beginning of this new chapter with all of you.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -832,7 +844,7 @@ function tick() {
   var target = new Date('2027-05-21T15:30:00');
   var diff = target - new Date();
   if (diff <= 0) {
-    document.getElementById('countdown-bar').innerHTML = "<p style='font-family:var(--font-script);font-weight:normal;font-size:1.8rem;color:white'>Today's the day! 🎉</p>";
+    document.getElementById('countdown-card').innerHTML = "<p style='font-family:var(--font-script);font-weight:normal;font-size:1.8rem;color:white'>Today's the day! 🎉</p>";
     return;
   }
   var d = Math.floor(diff / 86400000);
