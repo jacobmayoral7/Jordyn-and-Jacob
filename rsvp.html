@@ -125,9 +125,12 @@ a { text-decoration: none; }
   padding: 0.85rem 2.25rem;
   background: var(--color-accent);
   color: var(--white);
-  transition: background 0.2s;
+  cursor: pointer;
+  border: none;
+  transition: background 0.35s cubic-bezier(0.32,0.72,0,1), transform 0.35s cubic-bezier(0.32,0.72,0,1), box-shadow 0.35s cubic-bezier(0.32,0.72,0,1);
 }
-.back-btn:hover { background: var(--color-accent-hov); }
+.back-btn:hover { background: var(--color-accent-hov); transform: translateY(-2px); box-shadow: 0 10px 24px -8px rgba(217,54,124,0.45); }
+.back-btn:active { transform: scale(0.96); }
 
 .contact-note {
   font-family: var(--font-sans);
