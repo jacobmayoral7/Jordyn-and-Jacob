@@ -162,7 +162,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .divider { display: flex; align-items: center; gap: 0.75rem; justify-content: center; margin: 0 auto 2.5rem; max-width: 220px; }
 .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--color-border); }
 .divider-dot { width: 5px; height: 5px; background: var(--color-divider); transform: rotate(45deg); flex-shrink: 0; }
-.section-body { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 300; color: var(--charcoal); line-height: 1.9; text-align: center; max-width: 680px; margin: 0 auto; }
+.section-body { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 300; color: var(--charcoal); line-height: 1.9; text-align: center; max-width: 680px; margin: 0 auto; text-wrap: pretty; }
 section { padding: 7rem 2rem 5rem; }
 .btn { display: inline-block; font-family: var(--font-sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.85rem 2.25rem; transition: transform 0.35s cubic-bezier(0.32,0.72,0,1), box-shadow 0.35s cubic-bezier(0.32,0.72,0,1), background 0.35s cubic-bezier(0.32,0.72,0,1), color 0.35s cubic-bezier(0.32,0.72,0,1); cursor: pointer; border: none; }
 .btn:active { transform: scale(0.96); }
@@ -190,12 +190,23 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-accent); 
 
 /* COUNTDOWN */
 #countdown-bar { text-align: center; padding: 0 1.5rem 4.5rem; margin-top: -2.25rem; position: relative; display: flex; justify-content: center; }
-#countdown-card { background: var(--color-dark-bg); color: var(--white); padding: 2.75rem 3rem 3.25rem; border-top: 3px solid var(--amber); box-shadow: 0 28px 60px -18px rgba(35,58,29,0.5), 0 4px 14px rgba(0,0,0,0.1); max-width: 640px; width: 100%; }
-.cd-label { font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blush); margin-bottom: 1.85rem; }
-.cd-grid { display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap; }
-.cd-unit { text-align: center; min-width: 70px; }
-.cd-num { font-family: var(--font-serif); font-size: clamp(2.6rem, 6vw, 4rem); font-weight: 300; line-height: 1; display: block; }
-.cd-word { font-family: var(--font-sans); font-size: 0.64rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--blush); margin-top: 0.4rem; }
+#countdown-card {
+  background: radial-gradient(ellipse 130% 100% at 50% -12%, rgba(244,185,122,0.18), transparent 62%), var(--color-dark-bg);
+  color: var(--white);
+  position: relative;
+  padding: 3.25rem 3rem 3.25rem;
+  border-top: 1px solid var(--amber);
+  box-shadow: 0 30px 70px -18px rgba(35,58,29,0.55), 0 6px 18px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.09);
+  max-width: 640px;
+  width: 100%;
+}
+.cd-ornament { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); width: 30px; height: 30px; background: var(--color-dark-bg); border: 1px solid var(--amber); color: var(--amber); font-size: 0.8rem; display: flex; align-items: center; justify-content: center; }
+.cd-label { font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--blush); margin-bottom: 2rem; }
+.cd-grid { display: flex; align-items: center; justify-content: center; }
+.cd-unit { text-align: center; padding: 0 1.35rem; }
+.cd-divider { width: 1px; height: 42px; background: rgba(255,255,255,0.16); }
+.cd-num { font-family: var(--font-serif); font-variant-numeric: tabular-nums; font-size: clamp(2.6rem, 6vw, 4.2rem); font-weight: 300; line-height: 1; display: block; }
+.cd-word { font-family: var(--font-sans); font-size: 0.64rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--blush); margin-top: 0.5rem; }
 
 /* DETAILS */
 #details { background: var(--color-bg); }
@@ -246,7 +257,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-accent); 
 /* RSVP */
 #rsvp { background: linear-gradient(135deg, var(--deep-pink) 0%, var(--hot-pink) 55%, var(--coral) 100%); text-align: center; padding: 5.5rem 2rem; color: var(--white); }
 #rsvp .section-eyebrow { color: rgba(255,255,255,0.75); }
-#rsvp .section-title { color: var(--white); }
+#rsvp .section-title { color: var(--white); line-height: 1.7; padding-bottom: 0.25em; }
 #rsvp .divider::before, #rsvp .divider::after { background: rgba(255,255,255,0.35); }
 #rsvp .divider-dot { background: rgba(255,255,255,0.8); }
 .rsvp-body { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 300; color: rgba(255,255,255,0.92); max-width: 580px; margin: 0 auto 2.25rem; line-height: 1.85; text-align: center; }
@@ -263,7 +274,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-accent); 
 .registry-body { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 300; color: var(--charcoal); line-height: 1.9; text-align: center; max-width: 660px; margin: 0 auto 2.5rem; }
 .registry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 0; }
 .registry-card { background: var(--white); padding: 2rem 1.5rem; text-align: center; border: 1px solid var(--blush); box-shadow: 0 1px 2px rgba(58,50,41,0.04), 0 16px 32px -16px rgba(58,50,41,0.12); transition: transform 0.4s cubic-bezier(0.32,0.72,0,1), box-shadow 0.4s cubic-bezier(0.32,0.72,0,1); }
-.registry-store { font-family: var(--font-script); font-weight: normal; font-size: 1.25rem; color: var(--color-heading); margin-bottom: 0.4rem; line-height: 1.2; }
+.registry-store { font-family: var(--font-script); font-weight: normal; font-size: 1.25rem; color: var(--color-heading); margin-bottom: 0.7rem; padding-bottom: 0.15em; line-height: 1.3; }
 .registry-note { font-family: var(--font-sans); font-size: 0.78rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.5; }
 .honeymoon-card { background: var(--white); border: 1px solid var(--blush); box-shadow: 0 1px 2px rgba(58,50,41,0.04), 0 16px 32px -16px rgba(58,50,41,0.12); transition: transform 0.4s cubic-bezier(0.32,0.72,0,1), box-shadow 0.4s cubic-bezier(0.32,0.72,0,1); padding: 2.5rem 2rem; text-align: center; max-width: 420px; margin: 2rem auto 0; }
 .honeymoon-title { font-family: var(--font-script); font-weight: normal; font-size: 1.5rem; color: var(--color-heading); margin-bottom: 0.6rem; line-height: 1.2; }
@@ -311,9 +322,9 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
   .hero-location { font-size: 0.68rem; letter-spacing: 0.12em; margin-bottom: 2rem; }
   .btn { width: 100%; text-align: center; padding: 0.9rem 1.5rem; }
   #countdown-bar { padding: 0 1rem 3rem; margin-top: -1.5rem; }
-  #countdown-card { padding: 2.25rem 1.5rem 2.5rem; }
-  .cd-grid { gap: 1.25rem; }
-  .cd-unit { min-width: 60px; }
+  #countdown-card { padding: 2.25rem 1rem 2.5rem; }
+  .cd-unit { padding: 0 0.6rem; }
+  .cd-divider { height: 34px; }
   .event-cards { grid-template-columns: 1fr; }
   .event-card { padding: 2rem 1.5rem; }
   .timeline { padding-left: 1.5rem; }
@@ -325,8 +336,9 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
 }
 @media (max-width: 380px) {
   .hero-names { font-size: 1.8rem; }
-  .cd-grid { gap: 0.75rem; }
-  .cd-unit { min-width: 52px; }
+  .cd-unit { padding: 0 0.4rem; }
+  .cd-num { font-size: 2.15rem; }
+  .cd-divider { height: 28px; }
 }
 </style>
 </head>
@@ -393,11 +405,15 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
 <!-- COUNTDOWN -->
 <div id="countdown-bar">
   <div id="countdown-card">
+    <div class="cd-ornament">✦</div>
     <p class="cd-label">Counting down to the big day</p>
     <div class="cd-grid">
       <div class="cd-unit"><span class="cd-num" id="cd-days">—</span><span class="cd-word">Days</span></div>
+      <div class="cd-divider"></div>
       <div class="cd-unit"><span class="cd-num" id="cd-hours">—</span><span class="cd-word">Hours</span></div>
+      <div class="cd-divider"></div>
       <div class="cd-unit"><span class="cd-num" id="cd-minutes">—</span><span class="cd-word">Minutes</span></div>
+      <div class="cd-divider"></div>
       <div class="cd-unit"><span class="cd-num" id="cd-seconds">—</span><span class="cd-word">Seconds</span></div>
     </div>
   </div>
@@ -409,7 +425,7 @@ footer { background: var(--color-dark-bg); color: var(--white); text-align: cent
     <p class="section-eyebrow">The Details</p>
     <h2 class="section-title">Our Next Chapter is About to Begin</h2>
     <div class="divider"><div class="divider-dot"></div></div>
-    <p class="section-body">Here you'll find all the details you need for our wedding day. We can't wait to celebrate with you!</p>
+    <p class="section-body">Here you'll find all the details you need for our wedding day. We can't wait to celebrate with&nbsp;you!</p>
     <div class="event-cards">
       <div class="event-card">
         <div class="event-icon">✦</div>
